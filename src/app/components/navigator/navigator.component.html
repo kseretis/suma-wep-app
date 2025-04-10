@@ -1,0 +1,11 @@
+<div class="bg-teal-700 h-15 w-full fixed">
+  <div class="flex justify-center items-center h-full w-full">
+    @for (item of menu; track item.title) {
+    <div
+      class="font-semibold text-2xl italic text-gray-800 hover:cursor-pointer hover:text-teal-800 mx-3 p-3"
+    >
+      {{ item.title }}
+    </div>
+    }
+  </div>
+</div>

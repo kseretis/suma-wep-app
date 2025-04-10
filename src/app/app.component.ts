@@ -1,12 +1,26 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NavigatorComponent } from "./components/navigator/navigator.component";
+import { MenuItem } from './models/menu-item';
+import { MainComponent } from "./components/main/main.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [NzButtonModule, NavigatorComponent, MainComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'suma-wep-app';
+  menu: MenuItem[] = [
+    { title: 'Home', icon: 'home' },
+    { title: 'Profile', icon: 'home' },
+    { title: 'About', icon: 'home' },
+  ];
+
+  ngOnInit(): void {
+    console.log('Launcing suma-wep-app...');
+  }
+
 }
