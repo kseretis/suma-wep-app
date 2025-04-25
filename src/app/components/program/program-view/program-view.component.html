@@ -1,34 +1,66 @@
-<nz-table
-  #basicTable
-  ngSkipHydration
-  [nzTitle]="'Program List'"
-  [nzData]="programs"
-  [nzLoading]="isLoading"
-  class="w-lg"
->
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Active</th>
-      <th>Creation Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (program of programs; track program) {
-    <tr>
-      <td>{{ program.id }}</td>
-      <td>{{ program.name }}</td>
-      <td>
-        <label nz-checkbox [nzChecked]="program.isActive"></label>
-      </td>
-      <td>
-        {{ program.creationDate | date : "d MMMM y" }}
-      </td>
-    </tr>
-    }
-  </tbody>
-</nz-table>
-<div class="flex flex-row justify-end align-end">
-  <button nz-button (click)="addProgram()">Create a new program</button>
-</div>
+<nz-card nzTitle="Program List">
+  <nz-table
+    #basicTable
+    ngSkipHydration
+    [nzData]="programs"
+    [nzLoading]="isLoading"
+    class="w-lg"
+  >
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Active</th>
+        <th>Creation Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (program of programs; track program) {
+      <tr>
+        <td>{{ program.id }}</td>
+        <td>{{ program.name }}</td>
+        <td>
+          <label nz-checkbox [nzChecked]="program.isActive"></label>
+        </td>
+        <td>
+          {{ program.creationDate | date : "d MMMM y" }}
+        </td>
+      </tr>
+      }
+    </tbody>
+  </nz-table>
+</nz-card>
+
+<nz-card nzTitle="Create a new program" class="!my-5">
+  <form nz-form  [formGroup]="validateForm" (ngSubmit)="createProgram()">
+    <div class="flex flex-row justify-between">
+      <nz-form-item class="flex flex-grow">
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name"
+          >Name</nz-form-label
+        >
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="The name should not be empty"
+        >
+          <input
+            nz-input
+            id="name"
+            placeholder="Please give a program name"
+            formControlName="name"
+            type="text"
+            class="w-full my-1"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="flex-grow">
+        <label nz-checkbox formControlName="isActive">Active</label>
+      </nz-form-item>
+    </div>
+    <nz-form-item class="justify-end">
+      <button nz-button nzType="primary">
+        Create a new program
+      </button>
+    </nz-form-item>
+  </form>
+</nz-card>
