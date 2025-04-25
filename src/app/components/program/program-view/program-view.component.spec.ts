@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FatButtonComponent } from './fat-button.component';
+import { ProgramViewComponent } from './program-view.component';
 
-describe('FatButtonComponent', () => {
-  let component: FatButtonComponent;
-  let fixture: ComponentFixture<FatButtonComponent>;
+describe('ProgramViewComponent', () => {
+  let component: ProgramViewComponent;
+  let fixture: ComponentFixture<ProgramViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FatButtonComponent]
+      imports: [ProgramViewComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FatButtonComponent);
+    fixture = TestBed.createComponent(ProgramViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

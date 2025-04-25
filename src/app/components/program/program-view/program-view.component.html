@@ -1,0 +1,34 @@
+<nz-table
+  #basicTable
+  ngSkipHydration
+  [nzTitle]="'Program List'"
+  [nzData]="programs"
+  [nzLoading]="isLoading"
+  class="w-lg"
+>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Active</th>
+      <th>Creation Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (program of programs; track program) {
+    <tr>
+      <td>{{ program.id }}</td>
+      <td>{{ program.name }}</td>
+      <td>
+        <label nz-checkbox [nzChecked]="program.isActive"></label>
+      </td>
+      <td>
+        {{ program.creationDate | date : "d MMMM y" }}
+      </td>
+    </tr>
+    }
+  </tbody>
+</nz-table>
+<div class="flex flex-row justify-end align-end">
+  <button nz-button (click)="addProgram()">Create a new program</button>
+</div>
